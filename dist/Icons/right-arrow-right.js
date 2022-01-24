@@ -33,42 +33,38 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var TimeArrowDown = /*#__PURE__*/function (_React$Component) {
-  _inherits(TimeArrowDown, _React$Component);
+var RightArrowx = /*#__PURE__*/function (_React$Component) {
+  _inherits(RightArrowx, _React$Component);
 
-  var _super = _createSuper(TimeArrowDown);
+  var _super = _createSuper(RightArrowx);
 
-  function TimeArrowDown() {
-    _classCallCheck(this, TimeArrowDown);
+  function RightArrowx() {
+    _classCallCheck(this, RightArrowx);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(TimeArrowDown, [{
+  _createClass(RightArrowx, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("svg", {
-        width: "6",
-        height: "4",
-        className: "time-input-arrow",
-        viewBox: "0 0 6 4",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        onClick: this.props.onClick
+        width: "16",
+        height: "16",
+        viewBox: "0 0 16 16",
+        fill: "none"
       }, /*#__PURE__*/_react.default.createElement("path", {
-        fillRule: "evenodd",
-        clipRule: "evenodd",
-        d: "M0.76279 0.337514C0.588281 0.155247 0.30539 0.155247 0.130882 0.337514C-0.0436272 0.519648 -0.0436272 0.815248 0.130882 0.997381L2.68405 3.66418C2.85855 3.84631 3.14145 3.84631 3.31595 3.66418L5.86912 0.997381C6.04363 0.815248 6.04363 0.519648 5.86912 0.337514C5.69461 0.155247 5.41172 0.155247 5.23721 0.337514L2.99872 2.67551L0.76279 0.337514Z",
-        fill: "#7A8699"
+        d: "M13.257 7.627L9.864 4.234a.818.818 0 00-1.146 0 .818.818 0 000 1.147l2.003 2.015h-7.41a.806.806 0 00-.811.81c0 .452.359.81.81.81h7.411L8.718 11.02a.818.818 0 00.579 1.39.816.816 0 00.579-.244l3.38-3.381a.824.824 0 00.244-.579.778.778 0 00-.243-.579z",
+        fill: "#777A80",
+        opacity: "0.5"
       }));
     }
   }]);
 
-  return TimeArrowDown;
+  return RightArrowx;
 }(_react.default.Component);
 
-TimeArrowDown.propTypes = {
+RightArrowx.propTypes = {
   onClick: _propTypes.default.func.isRequired
 };
-var _default = TimeArrowDown;
+var _default = RightArrowx;
 exports.default = _default;

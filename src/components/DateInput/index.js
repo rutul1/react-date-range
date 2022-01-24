@@ -10,7 +10,7 @@ class DateInput extends PureComponent {
     this.state = {
       invalid: false,
       changed: false,
-      value: this.formatDate(props)
+      value: this.formatDate(props),
     };
   }
 
@@ -68,20 +68,23 @@ class DateInput extends PureComponent {
     const { value, invalid } = this.state;
 
     return (
-      <span className={classnames('rdrDateInput', className)}>
-        {label}
-        <input
-          readOnly={readOnly}
-          disabled={disabled}
-          value={value}
-          placeholder={placeholder}
-          onKeyDown={this.onKeyDown}
-          onChange={this.onChange}
-          onBlur={this.onBlur}
-          onFocus={onFocus}
-        />
+      <div className={`${classnames('rdrDateInput', className)} date-input-header`}>
+        <div>{label}</div>
+        <div className="startdate-wrp">
+          <input
+            readOnly={readOnly}
+            disabled={disabled}
+            value={value}
+            placeholder={placeholder}
+            onKeyDown={this.onKeyDown}
+            onChange={this.onChange}
+            onBlur={this.onBlur}
+            onFocus={onFocus}
+            className="form-control"
+          />
+        </div>
         {invalid && <span className="rdrWarning">&#9888;</span>}
-      </span>
+      </div>
     );
   }
 }
@@ -95,13 +98,13 @@ DateInput.propTypes = {
   dateDisplayFormat: PropTypes.string,
   className: PropTypes.string,
   onFocus: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 DateInput.defaultProps = {
   readOnly: true,
   disabled: false,
-  dateDisplayFormat: 'MMM D, YYYY'
+  dateDisplayFormat: 'MMM D, YYYY',
 };
 
 export default DateInput;

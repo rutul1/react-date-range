@@ -13,4 +13,33 @@
     right: .25em;
     color: #FF0000;
   }
+
+  .date-input-header {
+    adding: 0 15px;
+    display: flex;
+    align-items: center;
+  }
+  .startdate-wrp{
+    display: inline-block;
+    width: 122px;
+    padding: 15px 8px;
+  }
+  .form-control {
+    background: #f2f5f5;
+    border: 1px solid #f2f5f5;
+    border-radius: 2px;
+    font-size: 14px;
+    padding: 6px 8px;
+    height: 32px;
+    line-height: 21px;
+    -webkit-appearance: none;
+    color: #18181a;
+  }
+  .form-control:focus{
+    box-shadow: 0 2px 9px 0 rgba(37,50,69,.15);
+    color: #18181a;
+    color: var(--colorSecondary);
+    border-color: #89b9ff;
+    background: #fff;
+  }
 }

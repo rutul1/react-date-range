@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   dateRangeWrapper: 'rdrDateRangeWrapper',
   calendarWrapper: 'rdrCalendarWrapper',
@@ -55,6 +55,7 @@ var _default = {
   monthName: 'rdrMonthName',
   infiniteMonths: 'rdrInfiniteMonths',
   monthsVertical: 'rdrMonthsVertical',
-  monthsHorizontal: 'rdrMonthsHorizontal'
+  monthsHorizontal: 'rdrMonthsHorizontal',
+  monthAndYearDivider: 'monthAndYearDivider'
 };
-exports["default"] = _default;
+exports.default = _default;

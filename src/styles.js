@@ -49,5 +49,6 @@ export default {
   monthName: 'rdrMonthName',
   infiniteMonths: 'rdrInfiniteMonths',
   monthsVertical: 'rdrMonthsVertical',
-  monthsHorizontal: 'rdrMonthsHorizontal'
+  monthsHorizontal: 'rdrMonthsHorizontal',
+  monthAndYearDivider: 'monthAndYearDivider',
 };

@@ -9,6 +9,7 @@
 .rdrDateDisplay {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .rdrDateDisplayItem {
@@ -35,6 +36,7 @@
   box-sizing: inherit;
   display: flex;
   justify-content: space-between;
+  padding: 10px 15px 0px 15px;
 }
 
 .rdrMonthAndYearPickers {
