@@ -1,11 +1,9 @@
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.rangeShape = exports.default = void 0;
+exports["default"] = exports.rangeShape = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -15,35 +13,33 @@ var _classnames4 = _interopRequireDefault(require("classnames"));
 
 var _dateFns = require("date-fns");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -51,35 +47,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var DayCell = /*#__PURE__*/function (_Component) {
+var DayCell =
+/*#__PURE__*/
+function (_Component) {
   _inherits(DayCell, _Component);
-
-  var _super = _createSuper(DayCell);
 
   function DayCell(props, context) {
     var _this;
 
     _classCallCheck(this, DayCell);
 
-    _this = _super.call(this, props, context);
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DayCell).call(this, props, context));
 
     _defineProperty(_assertThisInitialized(_this), "handleKeyEvent", function (event) {
       var _this$props = _this.props,
@@ -157,7 +149,7 @@ var DayCell = /*#__PURE__*/function (_Component) {
           isEndOfMonth = _this$props3.isEndOfMonth,
           disabled = _this$props3.disabled,
           styles = _this$props3.styles;
-      return (0, _classnames4.default)(styles.day, (_classnames = {}, _defineProperty(_classnames, styles.dayPassive, isPassive), _defineProperty(_classnames, styles.dayDisabled, disabled), _defineProperty(_classnames, styles.dayToday, isToday), _defineProperty(_classnames, styles.dayWeekend, isWeekend), _defineProperty(_classnames, styles.dayStartOfWeek, isStartOfWeek), _defineProperty(_classnames, styles.dayEndOfWeek, isEndOfWeek), _defineProperty(_classnames, styles.dayStartOfMonth, isStartOfMonth), _defineProperty(_classnames, styles.dayEndOfMonth, isEndOfMonth), _classnames));
+      return (0, _classnames4["default"])(styles.day, (_classnames = {}, _defineProperty(_classnames, styles.dayPassive, isPassive), _defineProperty(_classnames, styles.dayDisabled, disabled), _defineProperty(_classnames, styles.dayToday, isToday), _defineProperty(_classnames, styles.dayWeekend, isWeekend), _defineProperty(_classnames, styles.dayStartOfWeek, isStartOfWeek), _defineProperty(_classnames, styles.dayEndOfWeek, isEndOfWeek), _defineProperty(_classnames, styles.dayStartOfMonth, isStartOfMonth), _defineProperty(_classnames, styles.dayEndOfMonth, isEndOfMonth), _classnames));
     });
 
     _defineProperty(_assertThisInitialized(_this), "renderPreviewPlaceholder", function () {
@@ -195,8 +187,8 @@ var DayCell = /*#__PURE__*/function (_Component) {
       var isInRangeStartEnd = startDateranges === day || endDateranges === day;
       var isStartEdgerange = !isInRange && (0, _dateFns.isSameDay)(day, startDateranges);
       var isEndEdgerange = !isInRange && (0, _dateFns.isSameDay)(day, endDateranges);
-      return /*#__PURE__*/_react.default.createElement("span", {
-        className: (0, _classnames4.default)((_classnames2 = {}, _defineProperty(_classnames2, styles.dayStartPreview, isStartEdge), _defineProperty(_classnames2, styles.dayInPreview, isInRange), _defineProperty(_classnames2, styles.dayEndPreview, isEndEdge), _classnames2)),
+      return _react["default"].createElement("span", {
+        className: (0, _classnames4["default"])((_classnames2 = {}, _defineProperty(_classnames2, styles.dayStartPreview, isStartEdge), _defineProperty(_classnames2, styles.dayInPreview, isInRange), _defineProperty(_classnames2, styles.dayEndPreview, isEndEdge), _classnames2)),
         style: {
           backgroundColor: range.color || _this.props.color // opacity: isStartEdge || isEndEdge ? 1 : 0.2,
           // zIndex: 0,
@@ -215,7 +207,7 @@ var DayCell = /*#__PURE__*/function (_Component) {
 
       if (_this.props.displayMode === 'date') {
         var isSelected = (0, _dateFns.isSameDay)(_this.props.day, _this.props.date);
-        return isSelected ? /*#__PURE__*/_react.default.createElement("span", {
+        return isSelected ? _react["default"].createElement("span", {
           className: styles.selected
         }) : null;
       }
@@ -250,9 +242,9 @@ var DayCell = /*#__PURE__*/function (_Component) {
       return inRanges.map(function (range, i) {
         var _classnames3;
 
-        return /*#__PURE__*/_react.default.createElement("span", {
+        return _react["default"].createElement("span", {
           key: i,
-          className: (0, _classnames4.default)((_classnames3 = {}, _defineProperty(_classnames3, styles.startEdge, range.isStartEdge), _defineProperty(_classnames3, styles.endEdge, range.isEndEdge), _defineProperty(_classnames3, styles.inRange, range.isInRange), _classnames3)),
+          className: (0, _classnames4["default"])((_classnames3 = {}, _defineProperty(_classnames3, styles.startEdge, range.isStartEdge), _defineProperty(_classnames3, styles.endEdge, range.isEndEdge), _defineProperty(_classnames3, styles.inRange, range.isInRange), _classnames3)),
           style: {
             color: range.color || _this.props.color // opacity: range.isStartEdge || range.isEndEdge ? 1 : 0.2,
             // border: 'none'
@@ -289,7 +281,7 @@ var DayCell = /*#__PURE__*/function (_Component) {
         }
       }
 
-      return /*#__PURE__*/_react.default.createElement("button", _extends({
+      return _react["default"].createElement("button", _extends({
         type: "button",
         onMouseEnter: this.handleMouseEvent,
         onMouseLeave: this.handleMouseEvent,
@@ -307,9 +299,9 @@ var DayCell = /*#__PURE__*/function (_Component) {
         style: {
           color: this.props.color
         }
-      }), this.renderSelectionPlaceholders(), /*#__PURE__*/_react.default.createElement("span", {
+      }), this.renderSelectionPlaceholders(), _react["default"].createElement("span", {
         className: this.props.styles.dayNumber
-      }, /*#__PURE__*/_react.default.createElement("span", null, (0, _dateFns.format)(this.props.day, this.props.dayDisplayFormat))));
+      }, _react["default"].createElement("span", null, (0, _dateFns.format)(this.props.day, this.props.dayDisplayFormat))));
     }
   }]);
 
@@ -318,43 +310,43 @@ var DayCell = /*#__PURE__*/function (_Component) {
 
 DayCell.defaultProps = {};
 
-var rangeShape = _propTypes.default.shape({
-  startDate: _propTypes.default.object,
-  endDate: _propTypes.default.object,
-  color: _propTypes.default.string,
-  key: _propTypes.default.string,
-  autoFocus: _propTypes.default.bool,
-  disabled: _propTypes.default.bool,
-  showDateDisplay: _propTypes.default.bool
+var rangeShape = _propTypes["default"].shape({
+  startDate: _propTypes["default"].object,
+  endDate: _propTypes["default"].object,
+  color: _propTypes["default"].string,
+  key: _propTypes["default"].string,
+  autoFocus: _propTypes["default"].bool,
+  disabled: _propTypes["default"].bool,
+  showDateDisplay: _propTypes["default"].bool
 });
 
 exports.rangeShape = rangeShape;
 DayCell.propTypes = {
-  day: _propTypes.default.object.isRequired,
-  dayDisplayFormat: _propTypes.default.string,
-  date: _propTypes.default.object,
-  ranges: _propTypes.default.arrayOf(rangeShape),
-  preview: _propTypes.default.shape({
-    startDate: _propTypes.default.object,
-    endDate: _propTypes.default.object,
-    color: _propTypes.default.string
+  day: _propTypes["default"].object.isRequired,
+  dayDisplayFormat: _propTypes["default"].string,
+  date: _propTypes["default"].object,
+  ranges: _propTypes["default"].arrayOf(rangeShape),
+  preview: _propTypes["default"].shape({
+    startDate: _propTypes["default"].object,
+    endDate: _propTypes["default"].object,
+    color: _propTypes["default"].string
   }),
-  onPreviewChange: _propTypes.default.func,
-  previewColor: _propTypes.default.string,
-  disabled: _propTypes.default.bool,
-  isPassive: _propTypes.default.bool,
-  isToday: _propTypes.default.bool,
-  isWeekend: _propTypes.default.bool,
-  isStartOfWeek: _propTypes.default.bool,
-  isEndOfWeek: _propTypes.default.bool,
-  isStartOfMonth: _propTypes.default.bool,
-  isEndOfMonth: _propTypes.default.bool,
-  color: _propTypes.default.string,
-  displayMode: _propTypes.default.oneOf(['dateRange', 'date']),
-  styles: _propTypes.default.object,
-  onMouseDown: _propTypes.default.func,
-  onMouseUp: _propTypes.default.func,
-  onMouseEnter: _propTypes.default.func
+  onPreviewChange: _propTypes["default"].func,
+  previewColor: _propTypes["default"].string,
+  disabled: _propTypes["default"].bool,
+  isPassive: _propTypes["default"].bool,
+  isToday: _propTypes["default"].bool,
+  isWeekend: _propTypes["default"].bool,
+  isStartOfWeek: _propTypes["default"].bool,
+  isEndOfWeek: _propTypes["default"].bool,
+  isStartOfMonth: _propTypes["default"].bool,
+  isEndOfMonth: _propTypes["default"].bool,
+  color: _propTypes["default"].string,
+  displayMode: _propTypes["default"].oneOf(['dateRange', 'date']),
+  styles: _propTypes["default"].object,
+  onMouseDown: _propTypes["default"].func,
+  onMouseUp: _propTypes["default"].func,
+  onMouseEnter: _propTypes["default"].func
 };
 var _default = DayCell;
-exports.default = _default;
+exports["default"] = _default;

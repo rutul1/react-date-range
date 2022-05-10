@@ -1,8 +1,11 @@
 .rdrCalendarWrapper {
   box-sizing: border-box;
   background: #ffffff;
+  display: -webkit-inline-box;
   display: inline-flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -10,13 +13,17 @@
 }
 
 .rdrDateDisplay {
+  display: -webkit-box;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .rdrDateDisplayItem {
-  flex: 1 1;
+  -webkit-box-flex: 1;
+          flex: 1 1;
   width: 0;
   text-align: left;
   padding: 0 20px;
@@ -40,16 +47,22 @@
 
 .rdrMonthAndYearWrapper {
   box-sizing: inherit;
+  display: -webkit-box;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
   padding: 10px 15px 0px 15px;
 }
 
 .rdrMonthAndYearPickers {
-  flex: 1 1 auto;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+  display: -webkit-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .rdrMonthPicker {
@@ -71,16 +84,22 @@
 }
 
 .rdrMonths {
+  display: -webkit-box;
   display: flex;
 }
 
 .rdrMonthsVertical {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
 }
 
 .rdrMonthsHorizontal > div > div > div {
+  display: -webkit-box;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
 }
 
 .rdrMonth {
@@ -88,6 +107,7 @@
 }
 
 .rdrWeekDays {
+  display: -webkit-box;
   display: flex;
 }
 
@@ -98,6 +118,7 @@
 }
 
 .rdrDays {
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
 }
@@ -138,8 +159,10 @@
 
 .rdrDateInput .date-input-header {
     adding: 0 15px;
+    display: -webkit-box;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+            align-items: center;
   }
 
 .rdrDateInput .startdate-wrp{
@@ -210,6 +233,7 @@
 .rdrDayActive{}
 
 .rdrDateRangePickerWrapper{
+  display: -webkit-inline-box;
   display: inline-flex;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -220,8 +244,11 @@
 .rdrDefinedRangesWrapper{}
 
 .rdrStaticRanges{
+  display: -webkit-box;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
 }
 
 .rdrStaticRange{
@@ -233,6 +260,7 @@
 .rdrInputRanges{}
 
 .rdrInputRange{
+  display: -webkit-box;
   display: flex;
 }
 

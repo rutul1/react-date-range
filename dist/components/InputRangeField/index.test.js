@@ -6,7 +6,7 @@ var _enzyme = require("enzyme");
 
 var _InputRangeField = _interopRequireDefault(require("../InputRangeField"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var styles = {
   inputRange: 'range',
@@ -25,7 +25,7 @@ var toChangeEvent = function toChangeEvent(value) {
 describe('InputRangeField tests', function () {
   test('Should parse input value to number', function () {
     var onChange = jest.fn();
-    var wrapper = (0, _enzyme.mount)( /*#__PURE__*/_react.default.createElement(_InputRangeField.default, {
+    var wrapper = (0, _enzyme.mount)(_react["default"].createElement(_InputRangeField["default"], {
       label: "Input label",
       styles: styles,
       onChange: onChange,
@@ -48,7 +48,7 @@ describe('InputRangeField tests', function () {
     expect(wrapper).toMatchSnapshot();
   });
   test('Should rerender when props change', function () {
-    var wrapper = (0, _enzyme.mount)( /*#__PURE__*/_react.default.createElement(_InputRangeField.default, {
+    var wrapper = (0, _enzyme.mount)(_react["default"].createElement(_InputRangeField["default"], {
       value: 12,
       placeholder: "Placeholder",
       label: "Input label",

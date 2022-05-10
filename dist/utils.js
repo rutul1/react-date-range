@@ -5,14 +5,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.calcFocusDate = calcFocusDate;
 exports.findNextRangeIndex = findNextRangeIndex;
-exports.generateStyles = generateStyles;
 exports.getMonthDisplayRange = getMonthDisplayRange;
+exports.generateStyles = generateStyles;
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _dateFns = require("date-fns");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function calcFocusDate(currentFocusedDate, props) {
   var shownDate = props.shownDate,
@@ -92,7 +92,7 @@ function generateStyles(sources) {
     return Boolean(source);
   }).reduce(function (styles, styleSource) {
     Object.keys(styleSource).forEach(function (key) {
-      styles[key] = (0, _classnames.default)(styles[key], styleSource[key]);
+      styles[key] = (0, _classnames["default"])(styles[key], styleSource[key]);
     });
     return styles;
   }, {});

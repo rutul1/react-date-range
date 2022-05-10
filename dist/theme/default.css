@@ -34,7 +34,8 @@
   }
 
 .rdrMonthAndYearWrapper {
-  align-items: center;
+  -webkit-box-align: center;
+          align-items: center;
   height: 60px;
   padding-top: 10px;
 }
@@ -92,20 +93,23 @@
     text-align: center;
     border-style: solid;
     margin: auto;
-    transform: translate(-3px, 0px);
+    -webkit-transform: translate(-3px, 0px);
+            transform: translate(-3px, 0px);
   }
 
 .rdrPprevButton i {
     border-width: 4px 6px 4px 4px;
     border-color: transparent rgb(52, 73, 94) transparent transparent;
-    transform: translate(-3px, 0px);
+    -webkit-transform: translate(-3px, 0px);
+            transform: translate(-3px, 0px);
   }
 
 .rdrNextButton i {
     margin: 0 0 0 7px;
     border-width: 4px 4px 4px 6px;
     border-color: transparent transparent transparent rgb(52, 73, 94);
-    transform: translate(3px, 0px);
+    -webkit-transform: translate(3px, 0px);
+            transform: translate(3px, 0px);
   }
 
 .rdrWeekDays {
@@ -159,9 +163,12 @@
   bottom: 0;
   top: 5px;
   bottom: 5px;
+  display: -webkit-box;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
 }
 
 .rdrDayToday .rdrDayNumber span {
@@ -173,7 +180,8 @@
     position: absolute;
     bottom: 4px;
     left: 50%;
-    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
     width: 18px;
     height: 2px;
     border-radius: 2px;
@@ -394,7 +402,8 @@
 }
 
 .rdrInputRange {
-  align-items: center;
+  -webkit-box-align: center;
+          align-items: center;
   padding: 5px 20px;
 }
 
@@ -457,7 +466,8 @@
   .rdrDayDisabled .rdrDayStartPreview,
   .rdrDayDisabled .rdrDayInPreview,
   .rdrDayDisabled .rdrDayEndPreview {
-    filter: grayscale(100%) opacity(60%);
+    -webkit-filter: grayscale(100%) opacity(60%);
+            filter: grayscale(100%) opacity(60%);
   }
 
 .rdrMonthName {
@@ -472,9 +482,11 @@
 }
 
 .pre-month-year-picker {
-  justify-content: left;
+  -webkit-box-pack: left;
+          justify-content: left;
 }
 
 .next-month-year-picker {
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
 }
