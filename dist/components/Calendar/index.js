@@ -220,7 +220,8 @@ function (_PureComponent) {
       var showMonthArrow = props.showMonthArrow,
           minDate = props.minDate,
           maxDate = props.maxDate,
-          showMonthAndYearPickers = props.showMonthAndYearPickers; // const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
+          showMonthAndYearPickers = props.showMonthAndYearPickers,
+          calendarFocus = props.calendarFocus; // const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
       // const lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
 
       var CurrYear = focusedDate.getFullYear();
@@ -249,13 +250,13 @@ function (_PureComponent) {
         }
       }, _react["default"].createElement(_leftArrow["default"], null)) : null, _react["default"].createElement("span", {
         className: styles.monthPicker
-      }, monthNames[focusedDate.getMonth()], " ", focusedDate.getFullYear())), _react["default"].createElement("span", {
+      }, calendarFocus === 'backwards' ? monthNames[focusedDate.getMonth() - 1] || monthNames[11] : monthNames[focusedDate.getMonth()], ' ', focusedDate.getFullYear())), _react["default"].createElement("span", {
         className: styles.monthAndYearDivider
       }), _react["default"].createElement("div", {
         className: "".concat(styles.monthAndYearPickers, " next-month-year-picker")
       }, _react["default"].createElement("span", {
         className: styles.yearPicker
-      }, monthNames[focusedDate.getMonth() + 1] || monthNames[0], ' ', focusedDate.getFullYear()), showMonthArrow ? _react["default"].createElement("button", {
+      }, calendarFocus === 'backwards' ? monthNames[focusedDate.getMonth()] || monthNames[0] : monthNames[focusedDate.getMonth() + 1], focusedDate.getFullYear()), showMonthArrow ? _react["default"].createElement("button", {
         type: "button",
         className: (0, _classnames3["default"])(styles.nextPrevButton, styles.nextButton),
         onClick: function onClick() {
