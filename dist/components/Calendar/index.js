@@ -98,6 +98,16 @@ function (_PureComponent) {
       var preventUnnecessary = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
       if (!props.scroll.enabled) {
+        if (preventUnnecessary && props.preventSnapRefocus) {
+          var focusedDateDiff = (0, _dateFns.differenceInCalendarMonths)(date, _this.state.focusedDate);
+          var isAllowedForward = props.calendarFocus === 'forwards' && focusedDateDiff >= 0;
+          var isAllowedBackward = props.calendarFocus === 'backwards' && focusedDateDiff <= 0;
+
+          if ((isAllowedForward || isAllowedBackward) && Math.abs(focusedDateDiff) < props.months) {
+            return;
+          }
+        }
+
         _this.setState({
           focusedDate: date
         });
@@ -212,10 +222,13 @@ function (_PureComponent) {
       var showMonthArrow = props.showMonthArrow,
           minDate = props.minDate,
           maxDate = props.maxDate,
-          showMonthAndYearPickers = props.showMonthAndYearPickers; // const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
+          showMonthAndYearPickers = props.showMonthAndYearPickers,
+          calendarFocus = props.calendarFocus; // const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
       // const lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
 
-      var CurrYear = focusedDate.getFullYear();
+      var currYear = focusedDate.getFullYear();
+      var prevYear = currYear - 1;
+      var nextYear = currYear + 1;
       var styles = _this.styles;
       var monthNames = _this.state.monthNames;
       return _react["default"].createElement("div", {
@@ -241,13 +254,13 @@ function (_PureComponent) {
         }
       }, _react["default"].createElement(_leftArrow["default"], null)) : null, _react["default"].createElement("span", {
         className: styles.monthPicker
-      }, monthNames[focusedDate.getMonth()], " ", focusedDate.getFullYear())), _react["default"].createElement("span", {
+      }, calendarFocus === 'backwards' && (focusedDate.getMonth() === 0 ? "".concat(monthNames[11], " ").concat(prevYear) : "".concat(monthNames[focusedDate.getMonth() - 1], " ").concat(currYear)), calendarFocus === 'forwards' && "".concat(monthNames[focusedDate.getMonth()], " ").concat(currYear))), _react["default"].createElement("span", {
         className: styles.monthAndYearDivider
       }), _react["default"].createElement("div", {
         className: "".concat(styles.monthAndYearPickers, " next-month-year-picker")
       }, _react["default"].createElement("span", {
         className: styles.yearPicker
-      }, monthNames[focusedDate.getMonth() + 1] || monthNames[0], ' ', focusedDate.getMonth() + 1 === 12 ? focusedDate.getFullYear() + 1 : focusedDate.getFullYear()), showMonthArrow ? _react["default"].createElement("button", {
+      }, calendarFocus === 'backwards' && "".concat(monthNames[focusedDate.getMonth()], " ").concat(currYear), calendarFocus === 'forwards' && "".concat(monthNames[focusedDate.getMonth() + 1] || monthNames[0], " ").concat(focusedDate.getMonth() + 1 === 12 ? nextYear : currYear)), showMonthArrow ? _react["default"].createElement("button", {
         type: "button",
         className: (0, _classnames3["default"])(styles.nextPrevButton, styles.nextButton),
         onClick: function onClick() {
@@ -635,6 +648,11 @@ function (_PureComponent) {
         className: (0, _classnames3["default"])(this.styles.months, isVertical ? this.styles.monthsVertical : this.styles.monthsHorizontal)
       }, new Array(this.props.months).fill(null).map(function (_, i) {
         var monthStep = (0, _dateFns.addMonths)(_this5.state.focusedDate, i);
+
+        if (_this5.props.calendarFocus === 'backwards') {
+          monthStep = (0, _dateFns.subMonths)(_this5.state.focusedDate, _this5.props.months - 1 - i);
+        }
+
         return _react["default"].createElement(_Month["default"], _extends({}, _this5.props, {
           onPreviewChange: onPreviewChange || _this5.updatePreview,
           preview: preview || _this5.state.preview,
@@ -690,7 +708,9 @@ Calendar.defaultProps = {
   editableDateInputs: false,
   dragSelectionEnabled: true,
   fixedHeight: false,
-  showMonthName: true
+  showMonthName: true,
+  calendarFocus: 'forwards',
+  preventSnapRefocus: false
 };
 Calendar.propTypes = {
   showMonthArrow: _propTypes["default"].bool,
@@ -742,7 +762,9 @@ Calendar.propTypes = {
   editableDateInputs: _propTypes["default"].bool,
   dragSelectionEnabled: _propTypes["default"].bool,
   fixedHeight: _propTypes["default"].bool,
-  showMonthName: _propTypes["default"].bool
+  showMonthName: _propTypes["default"].bool,
+  calendarFocus: _propTypes["default"].string,
+  preventSnapRefocus: _propTypes["default"].bool
 };
 var _default = Calendar;
 exports["default"] = _default;
