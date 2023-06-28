@@ -9,6 +9,7 @@ import ReactList from 'react-list';
 import { shallowEqualObjects } from 'shallow-equal';
 import {
   addMonths,
+  subMonths,
   format,
   eachDayOfInterval,
   startOfWeek,
@@ -96,6 +97,14 @@ class Calendar extends PureComponent {
   }
   focusToDate = (date, props = this.props, preventUnnecessary = true) => {
     if (!props.scroll.enabled) {
+      if (preventUnnecessary && props.preventSnapRefocus) {
+        const focusedDateDiff = differenceInCalendarMonths(date, this.state.focusedDate);
+        const isAllowedForward = props.calendarFocus === 'forwards' && focusedDateDiff >= 0;
+        const isAllowedBackward = props.calendarFocus === 'backwards' && focusedDateDiff <= 0;
+        if ((isAllowedForward || isAllowedBackward) && Math.abs(focusedDateDiff) < props.months) {
+          return;
+        }
+      }
       this.setState({ focusedDate: date });
       return;
     }
@@ -196,10 +205,12 @@ class Calendar extends PureComponent {
     this.isFirstRender = false;
   };
   renderMonthAndYear = (focusedDate, changeShownDate, props) => {
-    const { showMonthArrow, minDate, maxDate, showMonthAndYearPickers } = props;
+    const { showMonthArrow, minDate, maxDate, showMonthAndYearPickers, calendarFocus } = props;
     // const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
     // const lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
-    const CurrYear = focusedDate.getFullYear();
+    const currYear = focusedDate.getFullYear();
+    const prevYear = currYear - 1;
+    const nextYear = currYear + 1;
     const styles = this.styles;
     const { monthNames } = this.state;
     return (
@@ -235,7 +246,12 @@ class Calendar extends PureComponent {
                     </option>
                   ))}
                 </select> */}
-                {monthNames[focusedDate.getMonth()]} {focusedDate.getFullYear()}
+                {calendarFocus === 'backwards' &&
+                  (focusedDate.getMonth() === 0
+                    ? `${monthNames[11]} ${prevYear}`
+                    : `${monthNames[focusedDate.getMonth() - 1]} ${currYear}`)}
+                {calendarFocus === 'forwards' &&
+                  `${monthNames[focusedDate.getMonth()]} ${currYear}`}
               </span>
             </div>
             <span className={styles.monthAndYearDivider} />
@@ -251,10 +267,12 @@ class Calendar extends PureComponent {
                     </option>
                   ))}
                 </select> */}
-                {monthNames[focusedDate.getMonth() + 1] || monthNames[0]}{' '}
-                {focusedDate.getMonth() + 1 === 12
-                  ? focusedDate.getFullYear() + 1
-                  : focusedDate.getFullYear()}
+                {calendarFocus === 'backwards' &&
+                  `${monthNames[focusedDate.getMonth()]} ${currYear}`}
+                {calendarFocus === 'forwards' &&
+                  `${monthNames[focusedDate.getMonth() + 1] || monthNames[0]} ${
+                    focusedDate.getMonth() + 1 === 12 ? nextYear : currYear
+                  }`}
               </span>
               {showMonthArrow ? (
                 <button
@@ -519,7 +537,10 @@ class Calendar extends PureComponent {
                 isVertical ? this.styles.monthsVertical : this.styles.monthsHorizontal
               )}>
               {new Array(this.props.months).fill(null).map((_, i) => {
-                const monthStep = addMonths(this.state.focusedDate, i);
+                let monthStep = addMonths(this.state.focusedDate, i);
+                if (this.props.calendarFocus === 'backwards') {
+                  monthStep = subMonths(this.state.focusedDate, this.props.months - 1 - i);
+                }
                 return (
                   <Month
                     {...this.props}
@@ -579,6 +600,8 @@ Calendar.defaultProps = {
   dragSelectionEnabled: true,
   fixedHeight: false,
   showMonthName: true,
+  calendarFocus: 'forwards',
+  preventSnapRefocus: false,
 };
 
 Calendar.propTypes = {
@@ -632,6 +655,8 @@ Calendar.propTypes = {
   dragSelectionEnabled: PropTypes.bool,
   fixedHeight: PropTypes.bool,
   showMonthName: PropTypes.bool,
+  calendarFocus: PropTypes.string,
+  preventSnapRefocus: PropTypes.bool,
 };
 
 export default Calendar;
