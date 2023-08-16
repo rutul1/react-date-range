@@ -8,12 +8,12 @@ var _DefinedRange = _interopRequireDefault(require("../DefinedRange"));
 
 var _dateFns = require("date-fns");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 describe('DefinedRange tests', function () {
   test('Should call "renderStaticRangeLabel" callback correct amount of times according to the "hasCustomRendering" option', function () {
     var renderStaticRangeLabel = jest.fn();
-    (0, _enzyme.mount)(_react["default"].createElement(_DefinedRange["default"], {
+    (0, _enzyme.mount)( /*#__PURE__*/_react.default.createElement(_DefinedRange.default, {
       staticRanges: [{
         label: 'Dynamic Label',
         range: {},
@@ -44,19 +44,19 @@ describe('DefinedRange tests', function () {
   });
   test('Should render dynamic static label contents correctly', function () {
     var renderItalicLabelContent = function renderItalicLabelContent() {
-      return _react["default"].createElement("i", {
+      return /*#__PURE__*/_react.default.createElement("i", {
         className: 'italic-label-content'
       }, 'Italic Content');
     };
 
     var renderBoldLabelContent = function renderBoldLabelContent() {
-      return _react["default"].createElement("b", {
+      return /*#__PURE__*/_react.default.createElement("b", {
         className: 'bold-label-content'
       }, 'Bold Content');
     };
 
     var renderSomethingElse = function renderSomethingElse() {
-      return _react["default"].createElement("img", {
+      return /*#__PURE__*/_react.default.createElement("img", {
         className: 'random-image'
       });
     };
@@ -75,7 +75,7 @@ describe('DefinedRange tests', function () {
       return result;
     };
 
-    var wrapper = (0, _enzyme.shallow)(_react["default"].createElement(_DefinedRange["default"], {
+    var wrapper = (0, _enzyme.shallow)( /*#__PURE__*/_react.default.createElement(_DefinedRange.default, {
       staticRanges: [{
         id: 'italic',
         range: {},
