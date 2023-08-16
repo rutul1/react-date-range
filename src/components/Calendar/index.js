@@ -205,7 +205,14 @@ class Calendar extends PureComponent {
     this.isFirstRender = false;
   };
   renderMonthAndYear = (focusedDate, changeShownDate, props) => {
-    const { showMonthArrow, minDate, maxDate, showMonthAndYearPickers, calendarFocus } = props;
+    const {
+      showMonthArrow,
+      minDate,
+      maxDate,
+      showMonthAndYearPickers,
+      calendarFocus,
+      months,
+    } = props;
     // const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
     // const lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
     const currYear = focusedDate.getFullYear();
@@ -253,11 +260,34 @@ class Calendar extends PureComponent {
                 {calendarFocus === 'forwards' &&
                   `${monthNames[focusedDate.getMonth()]} ${currYear}`}
               </span>
+              {months === 1 && (
+                <>
+                  {showMonthArrow ? (
+                    <button
+                      type="button"
+                      className={classnames(styles.nextPrevButton, styles.nextButton)}
+                      onClick={() => changeShownDate(+1, 'monthOffset')}>
+                      <RightArrow />
+                    </button>
+                  ) : null}
+                  {showMonthArrow ? (
+                    <button
+                      type="button"
+                      className={classnames(styles.nextPrevButton, styles.nextButton)}
+                      onClick={() => changeShownDate(focusedDate.getFullYear() + 1, 'setYear')}>
+                      <RightDoubleArrow />
+                    </button>
+                  ) : null}
+                </>
+              )}
             </div>
-            <span className={styles.monthAndYearDivider} />
-            <div className={`${styles.monthAndYearPickers} next-month-year-picker`}>
-              <span className={styles.yearPicker}>
-                {/* <select
+
+            {months !== 1 && (
+              <>
+                <span className={styles.monthAndYearDivider} />
+                <div className={`${styles.monthAndYearPickers} next-month-year-picker`}>
+                  <span className={styles.yearPicker}>
+                    {/* <select
                   value={focusedDate.getMonth() + 1}
                   onChange={e => changeShownDate(e.target.value - 1, 'setMonth')}
                 >
@@ -267,30 +297,32 @@ class Calendar extends PureComponent {
                     </option>
                   ))}
                 </select> */}
-                {calendarFocus === 'backwards' &&
-                  `${monthNames[focusedDate.getMonth()]} ${currYear}`}
-                {calendarFocus === 'forwards' &&
-                  `${monthNames[focusedDate.getMonth() + 1] || monthNames[0]} ${
-                    focusedDate.getMonth() + 1 === 12 ? nextYear : currYear
-                  }`}
-              </span>
-              {showMonthArrow ? (
-                <button
-                  type="button"
-                  className={classnames(styles.nextPrevButton, styles.nextButton)}
-                  onClick={() => changeShownDate(+1, 'monthOffset')}>
-                  <RightArrow />
-                </button>
-              ) : null}
-              {showMonthArrow ? (
-                <button
-                  type="button"
-                  className={classnames(styles.nextPrevButton, styles.nextButton)}
-                  onClick={() => changeShownDate(focusedDate.getFullYear() + 1, 'setYear')}>
-                  <RightDoubleArrow />
-                </button>
-              ) : null}
-            </div>
+                    {calendarFocus === 'backwards' &&
+                      `${monthNames[focusedDate.getMonth()]} ${currYear}`}
+                    {calendarFocus === 'forwards' &&
+                      `${monthNames[focusedDate.getMonth() + 1] || monthNames[0]} ${
+                        focusedDate.getMonth() + 1 === 12 ? nextYear : currYear
+                      }`}
+                  </span>
+                  {showMonthArrow ? (
+                    <button
+                      type="button"
+                      className={classnames(styles.nextPrevButton, styles.nextButton)}
+                      onClick={() => changeShownDate(+1, 'monthOffset')}>
+                      <RightArrow />
+                    </button>
+                  ) : null}
+                  {showMonthArrow ? (
+                    <button
+                      type="button"
+                      className={classnames(styles.nextPrevButton, styles.nextButton)}
+                      onClick={() => changeShownDate(focusedDate.getFullYear() + 1, 'setYear')}>
+                      <RightDoubleArrow />
+                    </button>
+                  ) : null}
+                </div>
+              </>
+            )}
           </span>
         ) : (
           <span className={styles.monthAndYearPickers}>
