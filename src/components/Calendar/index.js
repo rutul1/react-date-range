@@ -224,7 +224,10 @@ class Calendar extends PureComponent {
       <div onMouseUp={e => e.stopPropagation()} className={styles.monthAndYearWrapper}>
         {showMonthAndYearPickers ? (
           <span className={styles.monthAndYearPickers}>
-            <div className={`${styles.monthAndYearPickers} pre-month-year-picker col-6`}>
+            <div
+              className={`${styles.monthAndYearPickers} pre-month-year-picker ${
+                months === 1 ? 'col-12' : 'col-6'
+              }`}>
               {showMonthArrow ? (
                 <button
                   type="button"
