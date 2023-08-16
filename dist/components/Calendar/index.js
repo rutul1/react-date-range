@@ -248,7 +248,7 @@ var Calendar = /*#__PURE__*/function (_PureComponent) {
       }, showMonthAndYearPickers ? /*#__PURE__*/_react.default.createElement("span", {
         className: styles.monthAndYearPickers
       }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "".concat(styles.monthAndYearPickers, " pre-month-year-picker col-6")
+        className: "".concat(styles.monthAndYearPickers, " pre-month-year-picker ").concat(months === 1 ? 'col-12' : 'col-6')
       }, showMonthArrow ? /*#__PURE__*/_react.default.createElement("button", {
         type: "button",
         className: (0, _classnames3.default)(styles.nextPrevButton, styles.prevButton),
