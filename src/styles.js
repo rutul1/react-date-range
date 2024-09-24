@@ -51,4 +51,5 @@ export default {
   monthsVertical: 'rdrMonthsVertical',
   monthsHorizontal: 'rdrMonthsHorizontal',
   monthAndYearDivider: 'monthAndYearDivider',
+  hideMonthDoubleArrow: 'hide-month-double-arrow',
 };
