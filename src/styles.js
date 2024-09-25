@@ -52,4 +52,7 @@ export default {
   monthsHorizontal: 'rdrMonthsHorizontal',
   monthAndYearDivider: 'monthAndYearDivider',
   hideMonthDoubleArrow: 'hide-month-double-arrow',
+  singleArrowCustomMarginRight: 'single-arrow-custom-margin-right',
+  singleArrowCustomMargin: 'single-arrow-custom-margin',
+
 };

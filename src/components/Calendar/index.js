@@ -235,7 +235,7 @@ class Calendar extends PureComponent {
                   className={classnames(
                     styles.nextPrevButton,
                     styles.prevButton,
-                    showMonthDoubleArrow ? '' : 'hide-month-double-arrow'
+                    showMonthDoubleArrow ? null : styles.hideMonthDoubleArrow
                   )}
                   onClick={() => changeShownDate(focusedDate.getFullYear() - 1, 'setYear')}>
                   <LeftDoubleArrow />
@@ -284,7 +284,7 @@ class Calendar extends PureComponent {
                       className={classnames(
                         styles.nextPrevButton,
                         styles.nextButton,
-                        showMonthDoubleArrow ? '' : 'hide-month-double-arrow'
+                        showMonthDoubleArrow ? null : styles.hideMonthDoubleArrow
                       )}
                       onClick={() => changeShownDate(focusedDate.getFullYear() + 1, 'setYear')}>
                       <RightDoubleArrow />
@@ -321,7 +321,7 @@ class Calendar extends PureComponent {
                       className={classnames(
                         styles.nextPrevButton,
                         styles.nextButton,
-                        'single-arrow-custom-margin'
+                        styles.singleArrowCustomMargin
                       )}
                       onClick={() => changeShownDate(+1, 'monthOffset')}>
                       <RightArrow />
@@ -333,8 +333,8 @@ class Calendar extends PureComponent {
                       className={classnames(
                         styles.nextPrevButton,
                         styles.nextButton,
-                        showMonthDoubleArrow ? '' : 'hide-month-double-arrow',
-                        'single-arrow-custom-margin-right'
+                        showMonthDoubleArrow ? null : styles.hideMonthDoubleArrow,
+                        styles.singleArrowCustomMarginRight
                       )}
                       onClick={() => changeShownDate(focusedDate.getFullYear() + 1, 'setYear')}>
                       <RightDoubleArrow />
