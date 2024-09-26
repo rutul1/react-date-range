@@ -284,7 +284,8 @@ class Calendar extends PureComponent {
                       className={classnames(
                         styles.nextPrevButton,
                         styles.nextButton,
-                        showMonthDoubleArrow ? null : styles.hideMonthDoubleArrow
+                        showMonthDoubleArrow ? null : styles.hideMonthDoubleArrow,
+                        styles.singleArrowCustomMarginRight
                       )}
                       onClick={() => changeShownDate(focusedDate.getFullYear() + 1, 'setYear')}>
                       <RightDoubleArrow />
