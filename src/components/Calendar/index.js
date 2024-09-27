@@ -207,6 +207,7 @@ class Calendar extends PureComponent {
   renderMonthAndYear = (focusedDate, changeShownDate, props) => {
     const {
       showMonthArrow,
+      showMonthDoubleArrow,
       minDate,
       maxDate,
       showMonthAndYearPickers,
@@ -231,7 +232,11 @@ class Calendar extends PureComponent {
               {showMonthArrow ? (
                 <button
                   type="button"
-                  className={classnames(styles.nextPrevButton, styles.prevButton)}
+                  className={classnames(
+                    styles.nextPrevButton,
+                    styles.prevButton,
+                    showMonthDoubleArrow ? null : styles.hideMonthDoubleArrow
+                  )}
                   onClick={() => changeShownDate(focusedDate.getFullYear() - 1, 'setYear')}>
                   <LeftDoubleArrow />
                 </button>
@@ -276,7 +281,12 @@ class Calendar extends PureComponent {
                   {showMonthArrow ? (
                     <button
                       type="button"
-                      className={classnames(styles.nextPrevButton, styles.nextButton)}
+                      className={classnames(
+                        styles.nextPrevButton,
+                        styles.nextButton,
+                        showMonthDoubleArrow ? null : styles.hideMonthDoubleArrow,
+                        styles.singleArrowCustomMarginRight
+                      )}
                       onClick={() => changeShownDate(focusedDate.getFullYear() + 1, 'setYear')}>
                       <RightDoubleArrow />
                     </button>
@@ -284,7 +294,6 @@ class Calendar extends PureComponent {
                 </>
               )}
             </div>
-
             {months !== 1 && (
               <>
                 <span className={styles.monthAndYearDivider} />
@@ -310,7 +319,11 @@ class Calendar extends PureComponent {
                   {showMonthArrow ? (
                     <button
                       type="button"
-                      className={classnames(styles.nextPrevButton, styles.nextButton)}
+                      className={classnames(
+                        styles.nextPrevButton,
+                        styles.nextButton,
+                        styles.singleArrowCustomMargin
+                      )}
                       onClick={() => changeShownDate(+1, 'monthOffset')}>
                       <RightArrow />
                     </button>
@@ -318,7 +331,12 @@ class Calendar extends PureComponent {
                   {showMonthArrow ? (
                     <button
                       type="button"
-                      className={classnames(styles.nextPrevButton, styles.nextButton)}
+                      className={classnames(
+                        styles.nextPrevButton,
+                        styles.nextButton,
+                        showMonthDoubleArrow ? null : styles.hideMonthDoubleArrow,
+                        styles.singleArrowCustomMarginRight
+                      )}
                       onClick={() => changeShownDate(focusedDate.getFullYear() + 1, 'setYear')}>
                       <RightDoubleArrow />
                     </button>
@@ -637,6 +655,7 @@ Calendar.defaultProps = {
   showMonthName: true,
   calendarFocus: 'forwards',
   preventSnapRefocus: false,
+  showMonthDoubleArrow: true,
 };
 
 Calendar.propTypes = {
@@ -692,6 +711,7 @@ Calendar.propTypes = {
   showMonthName: PropTypes.bool,
   calendarFocus: PropTypes.string,
   preventSnapRefocus: PropTypes.bool,
+  showMonthDoubleArrow: PropTypes.bool,
 };
 
 export default Calendar;
