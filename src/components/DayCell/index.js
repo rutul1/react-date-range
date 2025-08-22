@@ -209,11 +209,10 @@ class DayCell extends Component {
       >
         {this.renderSelectionPlaceholders()}
         {/* {this.renderPreviewPlaceholder()} */}
-       <span className={this.props.styles.dayNumber}>
-          {
-            dayContentRenderer?.(this.props.day) ||
+        <span className={this.props.styles.dayNumber}>
+          {(dayContentRenderer && dayContentRenderer(this.props.day)) || (
             <span>{format(this.props.day, this.props.dayDisplayFormat)}</span>
-          }
+          )}
         </span>
       </button>
     );
@@ -257,7 +256,8 @@ DayCell.propTypes = {
   styles: PropTypes.object,
   onMouseDown: PropTypes.func,
   onMouseUp: PropTypes.func,
-  onMouseEnter: PropTypes.func
+  onMouseEnter: PropTypes.func,
+  dayContentRenderer: PropTypes.func
 };
 
 export default DayCell;
