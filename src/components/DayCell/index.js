@@ -177,7 +177,7 @@ class DayCell extends Component {
     ));
   };
   render() {
-    const { preview, day, styles } = this.props;
+    const { preview, day, styles, dayContentRenderer } = this.props;
     let styleSpan = {};
     if (preview) {
       const startDate = preview.startDate ? endOfDay(preview.startDate) : null;
@@ -209,8 +209,11 @@ class DayCell extends Component {
       >
         {this.renderSelectionPlaceholders()}
         {/* {this.renderPreviewPlaceholder()} */}
-        <span className={this.props.styles.dayNumber}>
-          <span>{format(this.props.day, this.props.dayDisplayFormat)}</span>
+       <span className={this.props.styles.dayNumber}>
+          {
+            dayContentRenderer?.(this.props.day) ||
+            <span>{format(this.props.day, this.props.dayDisplayFormat)}</span>
+          }
         </span>
       </button>
     );
